@@ -1,38 +1,36 @@
 # Library Book Management API
 
-A REST API built using Node.js, Express.js, MongoDB, and Mongoose to manage library authors and books.
+A REST API built using Node.js, Express.js, MongoDB, and Mongoose to manage authors and books.
 
 ## Features
 
-- Create, retrieve, update, and delete authors.
-- Retrieve books written by a specific author.
-- Create, retrieve, update, and delete books.
+- Create, view, update, and delete authors.
+- Create, view, update, and delete books.
 - Search books by title.
 - Filter books by genre, author, and availability.
-- Validate input and handle errors.
+- Validate inputs and handle errors.
+- Prevent deleting authors who still have books.
 
 ## Technologies Used
 
-- Node.js
-- Express.js
-- MongoDB Atlas
-- Mongoose
+- Node.js and Express.js
+- MongoDB Atlas and Mongoose
 - Postman
+- Git and GitHub
 
 ## Project Structure
 
 ```text
-library-api/
+library-book-management-api/
 ├── config/
 ├── controllers/
-├── middleware/
 ├── models/
-├── postman/
 ├── routes/
+├── middleware/
+├── postman/
 ├── server.js
 ├── package.json
 ├── .env.example
-├── .gitignore
 └── README.md
 ```
 
@@ -41,39 +39,10 @@ library-api/
 ### 1. Clone the repository
 
 ```bash
-### 1. Clone the repository
-
-
 git clone https://github.com/Siddhu1080/library-book-management-api.git
 cd library-book-management-api
-
-
-### 2. Install dependencies
-
-
-npm install
-
-
-### 3. Configure environment variables
-
-Create a `.env` file in the project root using `.env.example` as a reference:
-
-```env
-PORT=5000
-MONGO_URI=YOUR_MONGODB_CONNECTION_STRING
 ```
 
-Replace the placeholder with your MongoDB connection string. Never commit your actual `.env` file or database credentials.
-
-### 4. Start the server
-
-```bash
-npm run dev
-```
-
-The API should run at `http://localhost:5000`.
-
-```
 ### 2. Install dependencies
 
 ```bash
@@ -82,14 +51,14 @@ npm install
 
 ### 3. Configure environment variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the project root:
 
 ```env
 PORT=5000
 MONGO_URI=YOUR_MONGODB_CONNECTION_STRING
 ```
 
-Replace the placeholder with your MongoDB connection string. Never upload your actual `.env` file to GitHub.
+Replace the placeholder with your MongoDB connection string. Never upload `.env` or database credentials to GitHub.
 
 ### 4. Start the server
 
@@ -97,9 +66,7 @@ Replace the placeholder with your MongoDB connection string. Never upload your a
 npm run dev
 ```
 
-The API should run at:
-
-`http://localhost:5000`
+API URL: `http://localhost:5000`
 
 ## API Endpoints
 
@@ -109,8 +76,8 @@ The API should run at:
 |---|---|---|
 | POST | `/api/authors` | Create an author |
 | GET | `/api/authors` | Get all authors |
-| GET | `/api/authors/:id` | Get an author by ID |
-| GET | `/api/authors/:id/books` | Get books by author |
+| GET | `/api/authors/:id` | Get an author |
+| GET | `/api/authors/:id/books` | Get an author's books |
 | PUT | `/api/authors/:id` | Update an author |
 | DELETE | `/api/authors/:id` | Delete an author |
 
@@ -120,28 +87,22 @@ The API should run at:
 |---|---|---|
 | POST | `/api/books` | Create a book |
 | GET | `/api/books` | Get all books |
-| GET | `/api/books/:id` | Get a book by ID |
+| GET | `/api/books/:id` | Get a book |
 | PUT | `/api/books/:id` | Update a book |
 | DELETE | `/api/books/:id` | Delete a book |
 
-### Book Filters
+The books endpoint supports searching by title and filtering by genre, author, and availability.
 
-The `GET /api/books` endpoint supports filtering by genre, author, and availability, as well as title search.
+## Author–Book Relationship
 
-Example:
+One author can have multiple books. Each book stores a reference to its author using a MongoDB ObjectId.
 
-```text
-GET /api/books?genre=Fiction
-GET /api/books?available=true
-GET /api/books?search=umbrella
-```
+## Postman Documentation
 
-## Testing with Postman
+[View API Documentation](https://documenter.getpostman.com/view/59008331/2sBYHSxLCg)
 
-Import the collection and environment JSON files from the `postman/` directory into Postman. Select the appropriate environment and run the requests against your local API.
+The exported Postman collection and environment are available in the `postman/` folder.
 
-## API Documentation
+## GitHub Repository
 
-Published Postman documentation:
-
-https://documenter.getpostman.com/view/59008331/2sBYHSxLCg
+https://github.com/Siddhu1080/library-book-management-api
