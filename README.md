@@ -43,16 +43,16 @@ library-api/
 ```bash
 ### 1. Clone the repository
 
-```bash
+
 git clone https://github.com/Siddhu1080/library-book-management-api.git
 cd library-book-management-api
-```
+
 
 ### 2. Install dependencies
 
-```bash
+
 npm install
-```
+
 
 ### 3. Configure environment variables
 
