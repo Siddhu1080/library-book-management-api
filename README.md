@@ -41,12 +41,9 @@ library-api/
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/Siddhu1080/library-book-management-api
 cd library-api
 ```
-
-Replace `YOUR_GITHUB_REPOSITORY_URL` with your actual GitHub repository URL.
-
 ### 2. Install dependencies
 
 ```bash
