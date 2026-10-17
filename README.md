@@ -41,8 +41,38 @@ library-api/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Siddhu1080/library-book-management-api
-cd library-api
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Siddhu1080/library-book-management-api.git
+cd library-book-management-api
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the project root using `.env.example` as a reference:
+
+```env
+PORT=5000
+MONGO_URI=YOUR_MONGODB_CONNECTION_STRING
+```
+
+Replace the placeholder with your MongoDB connection string. Never commit your actual `.env` file or database credentials.
+
+### 4. Start the server
+
+```bash
+npm run dev
+```
+
+The API should run at `http://localhost:5000`.
+
 ```
 ### 2. Install dependencies
 
