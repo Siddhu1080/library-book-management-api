@@ -1,0 +1,687 @@
+{
+  "info": {
+    "_postman_id": "fcdf68bb-8b11-41b8-9773-4245a3b82633",
+    "name": "Library Book API",
+    "description": "StartFragment\n\n# Library Book Management API\n\nA REST API built with Node.js, Express, MongoDB, and Mongoose to manage authors and books.\n\nStartFragment\n\n## Base URL\n\n`{{baseUrl}}`\n\n## Available operations\n\n- Create, retrieve, update, and delete authors.\n    \n- Retrieve books written by a specific author.\n    \n- Create, retrieve, update, and delete books.\n    \n- Filter books by genre, author, availability, and title search.\n    \n\nEndFragment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59008331",
+    "_collection_link": "https://go.postman.co/collection/59008331-fcdf68bb-8b11-41b8-9773-4245a3b82633?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Authors",
+      "item": [
+        {
+          "name": "Get ALL Authors",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"R. K. Narayan\",\r\n  \"email\": \"rknarayan@example.com\",\r\n  \"country\": \"India\",\r\n  \"bio\": \"Indian author known for novels and short stories.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/authors",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "authors"
+              ]
+            },
+            "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+          },
+          "response": [
+            {
+              "name": "Authors fetched successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"R. K. Narayan\",\r\n  \"email\": \"rknarayan@example.com\",\r\n  \"country\": \"India\",\r\n  \"bio\": \"Indian author known for novels and short stories.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/authors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "authors"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "739"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2e3-AzVJKR+S6BNoxb0lWA6MRw5Dzvk\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sat, 17 Oct 2026 04:46:09 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Authors fetched successfully\",\n  \"data\": [\n    {\n      \"_id\": \"6ad2fd3afe6033fde165dfe9\",\n      \"name\": \"Test Author\",\n      \"email\": \"testauthor2026@example.com\",\n      \"country\": \"India\",\n      \"bio\": \"Author created for API testing\",\n      \"createdAt\": \"2026-10-17T04:44:42.779Z\",\n      \"updatedAt\": \"2026-10-17T04:44:42.779Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6ad2670aa27f15b73962c066\",\n      \"name\": \"Ruskin Bond\",\n      \"email\": \"ruskinbond@example.com\",\n      \"country\": \"India\",\n      \"bio\": \"Indian author of short stories.\",\n      \"createdAt\": \"2026-10-16T18:03:54.983Z\",\n      \"updatedAt\": \"2026-10-16T18:03:54.983Z\",\n      \"__v\": 0\n    },\n    {\n      \"_id\": \"6ad264eba27f15b73962c064\",\n      \"name\": \"Temporary Author\",\n      \"email\": \"temporary.author@example.com\",\n      \"country\": \"India\",\n      \"createdAt\": \"2026-10-16T17:54:51.317Z\",\n      \"updatedAt\": \"2026-10-16T17:54:51.317Z\",\n      \"__v\": 0\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Author",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"country\": \"India\",\r\n  \"bio\": \"Author of Malgudi Days and other works.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/authors/6ad23dba15b0c1ea74025aaa",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "authors",
+                "6ad23dba15b0c1ea74025aaa"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Author",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Ruskin Bond\",\r\n  \"email\": \"ruskinbond@example.com\",\r\n  \"country\": \"India\",\r\n  \"bio\": \"Indian author of short stories.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/authors",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "authors"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Author created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Test Author\",\r\n  \"email\": \"testauthor2026@example.com\",\r\n  \"country\": \"India\",\r\n  \"bio\": \"Author created for API testing\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/authors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "authors"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "299"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"12b-9rZqOS29od/CDwyFQOiZq/xeiU0\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sat, 17 Oct 2026 04:44:42 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Author created successfully\",\n  \"data\": {\n    \"name\": \"Test Author\",\n    \"email\": \"testauthor2026@example.com\",\n    \"country\": \"India\",\n    \"bio\": \"Author created for API testing\",\n    \"_id\": \"6ad2fd3afe6033fde165dfe9\",\n    \"createdAt\": \"2026-10-17T04:44:42.779Z\",\n    \"updatedAt\": \"2026-10-17T04:44:42.779Z\",\n    \"__v\": 0\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Author by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "name": "Author fetched successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/authors/{{authorId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "authors",
+                    "{{authorId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "299"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"12b-/699nrGUfe4Mf73aosChJ9QbLWg\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sat, 17 Oct 2026 04:48:16 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Author fetched successfully\",\n  \"data\": {\n    \"_id\": \"6ad2fd3afe6033fde165dfe9\",\n    \"name\": \"Test Author\",\n    \"email\": \"testauthor2026@example.com\",\n    \"country\": \"India\",\n    \"bio\": \"Author created for API testing\",\n    \"createdAt\": \"2026-10-17T04:44:42.779Z\",\n    \"updatedAt\": \"2026-10-17T04:44:42.779Z\",\n    \"__v\": 0\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Books by Author",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Author",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "name": "Author deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/authors/{{authorId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "authors",
+                    "{{authorId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "56"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"38-wQoAYYHnGhaGbm1O9kuHYhexkUA\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sat, 17 Oct 2026 04:51:24 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Author deleted successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Get ALL Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/books",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Author books fetched successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "books"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "534"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"216-2KbUe80zBJ7vgTANtWB6t5OgirI\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sat, 17 Oct 2026 04:49:21 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Books fetched successfully\",\n  \"data\": [\n    {\n      \"_id\": \"6ad2fb8efe6033fde165dfe8\",\n      \"title\": \"The Blue Umbrella\",\n      \"author\": {\n        \"_id\": \"6ad2670aa27f15b73962c066\",\n        \"name\": \"Ruskin Bond\",\n        \"email\": \"ruskinbond@example.com\",\n        \"country\": \"India\",\n        \"bio\": \"Indian author of short stories.\",\n        \"createdAt\": \"2026-10-16T18:03:54.983Z\",\n        \"updatedAt\": \"2026-10-16T18:03:54.983Z\",\n        \"__v\": 0\n      },\n      \"isbn\": \"9780000001234\",\n      \"genre\": \"Fiction\",\n      \"publishedYear\": 1980,\n      \"available\": true,\n      \"createdAt\": \"2026-10-17T04:37:34.900Z\",\n      \"updatedAt\": \"2026-10-17T04:37:34.900Z\",\n      \"__v\": 0\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Book by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/books/6ad2680ea27f15b73962c067",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "6ad2680ea27f15b73962c067"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Book fetched successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/books/{{bookId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "books",
+                    "{{bookId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "531"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"213-G9jsIMO7N9+jaQJ3i+2Zlwzurlc\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sat, 17 Oct 2026 04:52:31 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Book fetched successfully\",\n  \"data\": {\n    \"_id\": \"6ad2fb8efe6033fde165dfe8\",\n    \"title\": \"The Blue Umbrella\",\n    \"author\": {\n      \"_id\": \"6ad2670aa27f15b73962c066\",\n      \"name\": \"Ruskin Bond\",\n      \"email\": \"ruskinbond@example.com\",\n      \"country\": \"India\",\n      \"bio\": \"Indian author of short stories.\",\n      \"createdAt\": \"2026-10-16T18:03:54.983Z\",\n      \"updatedAt\": \"2026-10-16T18:03:54.983Z\",\n      \"__v\": 0\n    },\n    \"isbn\": \"9780000001234\",\n    \"genre\": \"Fiction\",\n    \"publishedYear\": 1980,\n    \"available\": true,\n    \"createdAt\": \"2026-10-17T04:37:34.900Z\",\n    \"updatedAt\": \"2026-10-17T04:37:34.900Z\",\n    \"__v\": 0\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"The Blue Umbrella\",\r\n  \"author\": \"6ad2670aa27f15b73962c066\",\r\n  \"isbn\": \"9780000001234\",\r\n  \"genre\": \"Fiction\",\r\n  \"publishedYear\": 1980,\r\n  \"available\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/books",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Book",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"The Blue Umbrella - Updated\",\r\n  \"available\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/books/6ad2680ea27f15b73962c067",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "6ad2680ea27f15b73962c067"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Book updated successfully",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"The Blue Umbrella - Updated\",\r\n  \"genre\": \"Fiction\",\r\n  \"publishedYear\": 1980,\r\n  \"available\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/books/{{bookId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "books",
+                    "{{bookId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "541"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"21d-i9WoC9cFcoGL1S5w9U0JmZx/i1Y\""
+                },
+                {
+                  "key": "date",
+                  "value": "Sat, 17 Oct 2026 04:53:43 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Book updated successfully\",\n  \"data\": {\n    \"_id\": \"6ad2fb8efe6033fde165dfe8\",\n    \"title\": \"The Blue Umbrella - Updated\",\n    \"author\": {\n      \"_id\": \"6ad2670aa27f15b73962c066\",\n      \"name\": \"Ruskin Bond\",\n      \"email\": \"ruskinbond@example.com\",\n      \"country\": \"India\",\n      \"bio\": \"Indian author of short stories.\",\n      \"createdAt\": \"2026-10-16T18:03:54.983Z\",\n      \"updatedAt\": \"2026-10-16T18:03:54.983Z\",\n      \"__v\": 0\n    },\n    \"isbn\": \"9780000001234\",\n    \"genre\": \"Fiction\",\n    \"publishedYear\": 1980,\n    \"available\": true,\n    \"createdAt\": \"2026-10-17T04:37:34.900Z\",\n    \"updatedAt\": \"2026-10-17T04:53:43.768Z\",\n    \"__v\": 0\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Book",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/books/6ad2680ea27f15b73962c067",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "books",
+                "6ad2680ea27f15b73962c067"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
